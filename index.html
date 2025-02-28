@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de orbitales moleculares </title>
+    <title>Visualizador Molecular</title>
     <script type="text/javascript" src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script>
     <style>
         body { 
@@ -23,9 +23,9 @@
             align-items: center;
         }
         #viewer { 
-            width: 500px; 
+            width: 1000px; 
             height: 500px; 
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         #controls { 
             text-align: center;
@@ -34,10 +34,10 @@
 </head>
 <body>
     <div id="container">
-        <h2>Visualizador de OM</h2>
+        <h2>Visualizador de Moléculas</h2>
         <div id="viewer"></div>
         <div id="controls">
-            <label for="molecule">Selecciona un orbital:</label>
+            <label for="molecule">Selecciona una molécula:</label>
             <select id="molecule" onchange="loadMolecule()">
                 <option value="agua.mol">Agua (.mol)</option>
                 <option value="aguaOM1.cub">Orbital 1 (.cub) - 2 electrones</option>
@@ -65,7 +65,11 @@
         
         function loadMolecule() {
             var selectedFile = document.getElementById("molecule").value.split(" - ")[0];
-            Jmol.script(jmolViewer, "load " + selectedFile);
+            if (selectedFile.endsWith(".cub")) {
+                Jmol.script(jmolViewer, "load " + selectedFile + "; isosurface MO fill translucent 0.5; isosurface positive red; isosurface negative blue");
+            } else {
+                Jmol.script(jmolViewer, "load " + selectedFile);
+            }
         }
     </script>
 </body>
