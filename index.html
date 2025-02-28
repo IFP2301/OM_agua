@@ -6,24 +6,26 @@
     <title>Visualizador Molecular</title>
     <script type="text/javascript" src="https://chemapps.stolaf.edu/jmol/jsmol/JSmol.min.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        #viewer { width: 500px; height: 500px; margin: auto; }
+        body { font-family: Arial, sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #viewer { width: 500px; height: 500px; }
+        #controls { margin-top: 10px; text-align: center; }
     </style>
 </head>
 <body>
     <h2>Visualizador de Moléculas</h2>
     <div id="viewer"></div>
-    <br>
-    <label for="molecule">Selecciona una molécula:</label>
-    <select id="molecule" onchange="loadMolecule()">
-        <option value="agua.mol">Agua (.mol)</option>
-        <option value="aguaOM1.cub">Orbital 1 (.cub) - 2 electrones</option>
-        <option value="aguaOM2.cub">Orbital 2 (.cub) - 2 electrones</option>
-        <option value="aguaOM3.cub">Orbital 3 (.cub) - 2 electrones</option>
-        <option value="aguaOM4.cub">Orbital 4 (.cub) - 2 electrones</option>
-        <option value="aguaOM5.cub">Orbital 5 (.cub) - 0 electrones</option>
-        <option value="aguaOM6.cub">Orbital 6 (.cub) - 0 electrones</option>
-    </select>
+    <div id="controls">
+        <label for="molecule">Selecciona una molécula:</label>
+        <select id="molecule" onchange="loadMolecule()">
+            <option value="agua.mol">Agua (.mol)</option>
+            <option value="aguaOM1.cub">Orbital 1 (.cub) - 2 electrones</option>
+            <option value="aguaOM2.cub">Orbital 2 (.cub) - 2 electrones</option>
+            <option value="aguaOM3.cub">Orbital 3 (.cub) - 2 electrones</option>
+            <option value="aguaOM4.cub">Orbital 4 (.cub) - 2 electrones</option>
+            <option value="aguaOM5.cub">Orbital 5 (.cub) - 0 electrones</option>
+            <option value="aguaOM6.cub">Orbital 6 (.cub) - 0 electrones</option>
+        </select>
+    </div>
 
     <script>
         var jmolInfo = {
@@ -45,3 +47,4 @@
     </script>
 </body>
 </html>
+
